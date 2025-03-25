@@ -9,8 +9,8 @@ const unitSchema = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : "plant",
     }
-})
+} , {timestamps : true});
 
-const unitModel = mongoose.model("unit" , unitModel);
+const unitModel = mongoose.model("unit" , unitSchema);
 
 export default unitModel;

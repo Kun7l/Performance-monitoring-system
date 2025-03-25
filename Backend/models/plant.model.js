@@ -5,7 +5,7 @@ const plantSchema = new mongoose.Schema({
         type : String,
         required : true,
     }
-})
+} , {timestamps : true});
 
 const plantModel = mongoose.model("plant" , plantSchema);
 

@@ -1,0 +1,62 @@
+.login-page,
+.register-page {
+  width: 20vw;
+  height: 60vh;
+  padding: 2rem;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #daf0ee;
+}
+.login-page{
+  height: 45vh;
+}
+.header {
+  text-align: center;
+}
+
+.formGroup {
+  text-align: left;
+  margin: 0 0 15px 10%;
+}
+
+.label {
+  margin-bottom: 5px;
+}
+
+.input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80%;
+}
+
+.button {
+  padding: 10px;
+  background-color: #3b413c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 85%;
+}
+
+.submit {
+  padding: 10px;
+  background-color: rgba(21, 203, 21, 0.786);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 85%;
+}
+
+.toggle {
+  cursor: pointer;
+  color: #102c57;
+}
+
+#myRange {
+  accent-color: black;
+}

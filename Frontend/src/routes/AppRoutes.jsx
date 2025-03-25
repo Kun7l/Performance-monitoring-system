@@ -7,7 +7,9 @@ import Login from "../pages/Login.jsx";
 export default function AppRoutes() {
     return (
       <Router>
-        <Routes>
+        <Routes> 
+          <Route path="/" element={<Home/>}/>
+          <Route path="/upload-data" element={<UploadData/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="*" element={<NotFound/>} />  

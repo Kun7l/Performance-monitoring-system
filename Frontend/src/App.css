@@ -1,141 +1,120 @@
-@import "flowbite/src/themes/default";
-@plugin "flowbite/plugin";
-@source "../node_modules/flowbite";
-#root {
-  width: 100%;
-  padding: 1rem;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Gunjala+Gondi:wght@400..700&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+:root {
+  --background-color: #f7f6f3;
+  --font-heading: #09090a;
+  --font-body: #69696d;
+  --font-style-ubuntu: "Ubuntu", sans-serif;
+  --font-style-red-hat: "Red Hat Display", sans-serif;
+  --font-style-noto: "Noto Sans Gunjala Gondi", sans-serif;
+}
+::selection {
+  color: var(--background-color);
+  background-color: var(--font-heading);
+}
+body {
+  background-color: var(--background-color);
+  color: var(--font-body);
+  font-size: 0.875rem;
+  font-family: var(--font-style-noto);
+  font-weight: 300;
+  line-height: 1.25rem;
+  text-align: left;
+}
+h1 {
+  color: var(--font-heading);
+  font-family: var(--font-style-red-hat);
+  font-size: 2.7rem;
+  font-weight: 550;
+  line-height: 1;
+}
+button,
+.button {
+  background-color: var(--font-heading) !important;
+  border-radius: 6px;
+  color: var(--background-color) !important;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 2.5px 1rem;
+}
+
+.sidebar-div {
+  background-color: #f0eeed;
+  box-shadow: 0 4px 8px 0 rgb(9, 9, 10, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.01);
+  border-radius: 6px;
+  width: 15%;
+  height: 100vh;
+  position: absolute;
+  z-index: 10;
   text-align: center;
 }
-body {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-}
-
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  /* color-scheme: light dark;   */
-  /* background-color: #242424;  */
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-:root {
-  --background-primary: #fff;
-  --container-primary: #f8f9fa;
-  --purple-dark: #27005d;
-  --purple-light: #d8b9f8;
-  --purple-mid: #8c6df7;
-  --purple-accent: #8d08ec;
-  --purple-accent-2: #8c6df7;
-  --purple-text: #837ea0;
-  --black: #000;
-  --white: #fff;
-}
-
-.app-bar {
-  height: 10vh !important;
-  background-color: var(--purple-dark) !important;
-}
-.sidebar-heading {
-  width: 100%;
-  text-align: left;
-  font-size: 1rem !important;
-  font-weight: 400;
-}
-.sidebar-heading span {
-  font-size: 1.7rem;
-  font-weight: 600;
-  line-height: 1;
-
-  font-family: Arial, Helvetica, sans-serif;
-}
-a {
-  font-weight: 500;
-  color: black;
-  text-decoration: inherit;
-}
-
-body {
-  margin: 0;
+.sidebar-div .logo {
+  width: 80%;
+  height: 30px;
+  margin: 10% 20%;
+  text-align: center;
+  color: var(--font-heading);
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  /* background-color: red; */
+}
+.sidebar-div .logo span {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-left: 20px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.link-div {
+  margin-top: 20%;
+  padding: 10px;
+}
+.link-div ul li {
+  color: var(--font-heading);
+  padding: 10px;
+  margin: 10px 2px;
+  font-weight: 500 !important;
+  border-bottom: 1px solid #a4a4a7;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
+.link-div ul li img:hover {
+  position: relative;
+  top: 20px;
+  left: 30px;
+}
+.link-div ul :hover {
+  border-radius: 6px;
+  background-color: var(--font-heading);
+  color: var(--background-color);
+  transition: all 0.1s ease-in;
   cursor: pointer;
-  transition: border-color 0.25s;
 }
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.container {
+  margin-left: 15%;
+  padding: 10px;
+  width: 85%;
 }
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-
-  margin: 0;
+.body-container {
+  box-shadow: 0 4px 8px 0 rgb(9, 9, 10, 0.2);
+  padding: 20px;
+  border-radius: 9px;
 }
-
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-.upload-container {
-  background-color: var(--container-primary) !important;
-  padding: 1rem;
-  border-radius: 12px;
+.form-item-div {
+  width: 50% !important;
+  margin: 0 20px;
   text-align: left;
 }
-.upload-div div {
-  width: 100%;
-}
-.upload-div div .textField {
-  width: 95%;
-}
-.dropzone {
-  border-color: #bdbdbd !important;
+.form-item-div .textField {
+  width: 100% !important;
 }
 .upload-button {
-  background-color: var(--purple-accent-2) !important;
+  width: 15% !important;
 }
-.upload-button:hover {
-  background-color: var(--purple-accent) !important;
+.border-1 {
+  border: 1px solid #a1a1abbd;
 }
-.upload-button-div {
-  text-align: center;
+#dropzone-file {
+  border-radius: 6px;
 }
-
-.loading-div {
-  text-align: center !important;
-  width: 100%;
-  margin: 20px 0;
-}
-::file-selector-button {
-  margin-right: -10%;
-  background-color: transparent !important;
-}
-
-@media only screen and (max-width: 600px) {
-  .upload-div {
-    display: block !important;
-  }
-  .upload-div {
-    margin: 5px 0 10px 0;
-  }
+::-webkit-file-upload-button {
+  border-radius: 6px !important;
+  background-color: var(--font-body);
 }

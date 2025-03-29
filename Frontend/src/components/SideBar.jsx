@@ -1,140 +1,45 @@
-import * as React from "react";
-import { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
-import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-
-const drawerWidth = 240;
-
-function SideBar(props) {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isClosing, setIsClosing] = React.useState(false);
-
-  const handleDrawerClose = () => {
-    setIsClosing(true);
-    setMobileOpen(false);
-  };
-
-  const handleDrawerTransitionEnd = () => {
-    setIsClosing(false);
-  };
-
-  const handleDrawerToggle = () => {
-    if (!isClosing) {
-      setMobileOpen(!mobileOpen);
-    }
-  };
-
-  const drawer = (
-    <div>
-      <h3>logo</h3>
-      <Divider />
-
-      <Divider />
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <Link to={"/upload-data"}>
-              <ListItemText primary={"Upload Data"} />
-            </Link>
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemText primary={"text"} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemText primary={"text"} />
-          </ListItemButton>
-        </ListItem>
-      </List>
+import "../components/css/sidebar.css";
+import home from "../assests/home.svg";
+const SideBar = () => {
+  return (
+    <div class="sidebar-div">
+      <div className="logo">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="none"
+          class="hidden md:block"
+        >
+          <path
+            fill="currentColor"
+            fill-rule="evenodd"
+            d="M14.347 0a14.931 14.931 0 0 0-6.282 1.68l6.282 10.88V0Zm0 17.443L8.067 28.32a14.931 14.931 0 0 0 6.28 1.68V17.443ZM15.652 30V17.432l6.286 10.887a14.932 14.932 0 0 1-6.286 1.68Zm0-17.43V0c2.261.096 4.393.693 6.287 1.682L15.652 12.57ZM2.336 23.067l10.884-6.284-6.284 10.884a15.093 15.093 0 0 1-4.6-4.6Zm25.33-16.132-10.88 6.281 6.283-10.88a15.093 15.093 0 0 1 4.598 4.599ZM2.335 6.934a15.094 15.094 0 0 1 4.6-4.6l6.284 10.884L2.335 6.934Zm-.654 1.13a14.932 14.932 0 0 0-1.68 6.286h12.567L1.681 8.064Zm0 13.873a14.932 14.932 0 0 1-1.68-6.282h12.562L1.682 21.937Zm15.754-7.587H30a14.932 14.932 0 0 0-1.68-6.285L17.435 14.35Zm10.885 7.586-10.88-6.28H30a14.932 14.932 0 0 1-1.68 6.28Zm-11.534-5.151 6.281 10.88a15.094 15.094 0 0 0 4.599-4.599l-10.88-6.281Z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <span>GSECL</span>
+      </div>
+      <div className="link-div">
+        <ul>
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/upload-data"}>Upload Data</Link>
+          </li>
+          <li>
+            <Link to={"/"}>About</Link>
+          </li>
+          <li>
+            <Link to={"/"}>Contact</Link>
+          </li>
+        </ul>
+      </div>
     </div>
   );
-
-  return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar
-        className="app-bar"
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-        }}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-
-          <p className="sidebar-heading">
-            welcome back <br /> <span>krunal khairanar</span>
-          </p>
-        </Toolbar>
-      </AppBar>
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
-      >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onTransitionEnd={handleDrawerTransitionEnd}
-          onClose={handleDrawerClose}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: "none", sm: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-          open
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-    </Box>
-  );
-}
+};
 
 export default SideBar;

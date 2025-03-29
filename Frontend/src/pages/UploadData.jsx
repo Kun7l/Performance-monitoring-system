@@ -13,8 +13,8 @@ import { Button } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 import axios from "axios";
+
 import SideBar from "../components/SideBar";
-import LoadingBar from "../components/LoadingBar";
 
 function UploadData() {
   const navigate = useNavigate();
@@ -45,7 +45,6 @@ function UploadData() {
     formData.append("file", file);
     formData.append("engineer_name", engineerName);
     formData.append("shift", shift);
-    
 
     try {
       const response = await axios.post(
@@ -68,122 +67,124 @@ function UploadData() {
 
   return (
     <>
-      <Box sx={{ display: "flex", width: "100%", height: "100vh" }}>
-        <SideBar />
-        <Box
-          component="main"
-          sx={{
-            flexGrow: 1,
-            display: "flex",
-            flexDirection: "column",
-            textAlign: "center",
-          }}
-        >
-          <Toolbar />
+      <SideBar />
+      <div className="container">
+        <div className="body-container">
           <Box
-            component="form"
-            sx={{ "& .MuiTextField-root": { m: 1, width: "25ch" } }}
-            noValidate
-            autoComplete="off"
-            className="upload-container"
+            component="main"
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
           >
-            <div
-              className="upload-div"
-              style={{ display: "flex", width: "100%" }}
+           
+            <Box
+              component="form"
+              sx={{ "& .MuiTextField-root": { m: 1, width: "25ch" } }}
+              noValidate
+              autoComplete="off"
+              className="upload-container"
             >
-              <div>
-                <InputLabel variant="standard" htmlFor="outlined-required">
-                  Engineer Name
-                </InputLabel>
-                <TextField
-                  required
-                  id="outlined-required"
-                  label="Engineer Name"
-                  className="textField"
-                  value={engineerName}
-                  onChange={(e) => {
-                    setEngineerName(e.target.value);
-                  }}
-                />
-              </div>
-              <div>
-                <InputLabel
-                  variant="standard"
-                  htmlFor="demo-simple-select-label"
-                >
-                  Shift
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  className="textField"
-                  sx={{ width: "45%", ml: 1, mt: 1 }}
-                  value={shift}
-                  onChange={(e) => {
-                    setShift(e.target.value);
-                  }}
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={"Shift 1"}>Shift 1</MenuItem>
-                  <MenuItem value={"Shift 2"}>Shift 2</MenuItem>
-                  <MenuItem value={"Shift 3"}>Shift 3</MenuItem>
-                  <MenuItem value={"Shift 4"}>Shift 4</MenuItem>
-                </Select>
-              </div>
-            </div>
-            <div className="upload-div">
-              <div>
-                {isUploading ? (
-                  <div className="loading-div">
-                    <LoadingBar />
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-center w-full mt-10">
-                    <label
-                      htmlFor="dropzone-file"
-                      className=" dropzone flex flex-col items-center justify-center w-full h-64 border-1 rounded-lg"
-                    >
-                      <div className="flex flex-col items-center justify-center pt-5 pb-6 ">
-                        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                          <span className="font-semibold">Click to upload</span>{" "}
-                          or drag and drop
-                        </p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
-                          Excel files only
-                        </p>
-                      </div>
-                      <input
-                        id="dropzone-file"
-                        type="file"
-                        accept=".xlsx,.xls"
-                        onChange={(e) => {
-                          setFile(e.target.files[0]);
-                        }}
-                      />
-                    </label>
-                  </div>
-                )}
-                <div
-                  className="upload-button-div"
-                  style={{ width: "100%", margin: "30px 0 0 0" }}
-                >
-                  <Button
-                    onClick={handleUpload}
-                    className="upload-button"
-                    component="label"
-                    variant="contained"
-                    startIcon={<CloudUploadIcon />}
+              <div
+                className="upload-div"
+                style={{ display: "flex", width: "100%" }}
+              >
+                <div className="form-item-div">
+                  <InputLabel variant="standard" htmlFor="outlined-required">
+                    Engineer Name
+                  </InputLabel>
+                  <TextField
+                    required
+                    id="outlined-required"
+                    label="Engineer Name"
+                    className="textField"
+                    value={engineerName}
+                    onChange={(e) => {
+                      setEngineerName(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="form-item-div">
+                  <InputLabel
+                    variant="standard"
+                    htmlFor="demo-simple-select-label"
                   >
-                    Upload Report
-                  </Button>
+                    Shift
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    className="textField"
+                    sx={{ width: "45%", ml: 1, mt: 1 }}
+                    value={shift}
+                    onChange={(e) => {
+                      setShift(e.target.value);
+                    }}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={"Shift 1"}>Shift 1</MenuItem>
+                    <MenuItem value={"Shift 2"}>Shift 2</MenuItem>
+                    <MenuItem value={"Shift 3"}>Shift 3</MenuItem>
+                    <MenuItem value={"Shift 4"}>Shift 4</MenuItem>
+                  </Select>
                 </div>
               </div>
-            </div>
+              <div className="upload-div">
+                <div>
+                  {isUploading ? (
+                    <div className="loading-div"></div>
+                  ) : (
+                    <div className="flex items-center justify-center w-full mt-10">
+                      <label
+                        htmlFor="dropzone-file"
+                        className=" dropzone flex flex-col items-center justify-center w-full h-64 border-1 rounded-lg"
+                      >
+                        <div className="flex flex-col items-center justify-center pt-5 pb-6 ">
+                          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                            <span className="font-semibold">
+                              Click to upload
+                            </span>{" "}
+                            or drag and drop
+                          </p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">
+                            Excel files only
+                          </p>
+                        </div>
+                        <input
+                          id="dropzone-file"
+                          type="file"
+                          accept=".xlsx,.xls"
+                          onChange={(e) => {
+                            setFile(e.target.files[0]);
+                          }}
+                        />
+                      </label>
+                    </div>
+                  )}
+                  <div
+                    className="upload-button-div"
+                    style={{ width: "100%", margin: "30px 0 0 0" }}
+                  >
+                    <Button
+                      onClick={handleUpload}
+                      className="button upload-button"
+                      component="label"
+                      variant="contained"
+                      startIcon={<CloudUploadIcon />}
+                    >
+                      Upload Report
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </Box>
           </Box>
-        </Box>
-      </Box>
+        </div>
+      </div>
     </>
   );
 }

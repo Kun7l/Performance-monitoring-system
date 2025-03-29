@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
     try{
-        await mongoose.connect("mongodb+srv://kunalkhairanar007:JlkvLZTqJFpf5ZUV@cluster0.jvsjg.mongodb.net/Performance-monitoring-system");
+        await mongoose.connect("mongodb://localhost:27017/PMS");
         console.log("database connected sucessfully");
     }   
     catch(error){

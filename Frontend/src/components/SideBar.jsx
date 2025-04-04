@@ -31,7 +31,7 @@ const SideBar = () => {
             <Link to={"/upload-data"}>Upload Data</Link>
           </li>
           <li>
-            <Link to={"/"}>About</Link>
+            <Link to={"/dashboard"}>DashBoard</Link>
           </li>
           <li>
             <Link to={"/"}>Contact</Link>

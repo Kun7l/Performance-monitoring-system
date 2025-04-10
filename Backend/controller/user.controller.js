@@ -22,8 +22,8 @@ const userRegister = async (req,res) =>{
             email,
             password : hashedPassword,
             role : "plant operator",
-            plantId,
-            unitId,
+            plantId : [plantId],
+            unitId : [unitId],
         });
         return res.status(201).json({user , message : "plant operator account created successfully"});
       }

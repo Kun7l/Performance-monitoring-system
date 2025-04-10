@@ -16,14 +16,14 @@ const userSchema = new mongoose.Schema({
         enum : ["plant operator" , "higher authority"],
         required : true,
     },
-    plantId : {
+    plantId : [{
         type : mongoose.Schema.Types.ObjectId,
         ref : "plant",
-    },
-    unitId : {
+    }],
+    unitId : [{
         type : mongoose.Schema.Types.ObjectId,
         ref : "unit",
-    },
+    }],
 } , {timestamps : true});
 
 userSchema.statics.hashPassword = async function (password){

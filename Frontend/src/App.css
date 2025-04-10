@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Gunjala+Gondi:wght@400..700&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+:root {
+  --background-color: #f7f6f3;
+  --font-heading: #09090a;
+  --font-body: #69696d;
+  --font-style-ubuntu: "Ubuntu", sans-serif;
+  --font-style-red-hat: "Red Hat Display", sans-serif;
+  --font-style-noto: "Noto Sans Gunjala Gondi", sans-serif;
+}
+::selection {
+  color: var(--background-color);
+  background-color: var(--font-heading);
+}
+body {
+  background-color: var(--background-color);
+  color: var(--font-body);
+  font-size: 0.875rem;
+  font-family: var(--font-style-noto);
+  font-weight: 300;
+  line-height: 1.25rem;
+  text-align: left;
+}
+h1 {
+  color: var(--font-heading);
+  font-family: var(--font-style-red-hat);
+  font-size: 2.7rem;
+  font-weight: 550;
+  line-height: 1;
+}
+button,
+.button {
+  background-color: var(--font-heading) !important;
+  border-radius: 6px;
+  color: var(--background-color) !important;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 2.5px 1rem;
+}
+
+.sidebar-div {
+  background-color: #f0eeed;
+  box-shadow: 0 4px 8px 0 rgb(9, 9, 10, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.01);
+  border-radius: 6px;
+  width: 15%;
+  height: 100vh;
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+}
+.sidebar-div .logo {
+  width: 80%;
+  height: 30px;
+  margin: 10% 20%;
+  text-align: center;
+  color: var(--font-heading);
+  display: flex;
+  /* background-color: red; */
+}
+.sidebar-div .logo span {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.link-div {
+  margin-top: 20%;
+  padding: 10px;
+}
+.link-div ul li {
+  color: var(--font-heading);
+  padding: 10px;
+  margin: 10px 2px;
+  font-weight: 500 !important;
+  border-bottom: 1px solid #a4a4a7;
+}
+
+.link-div ul li img:hover {
+  position: relative;
+  top: 20px;
+  left: 30px;
+}
+.link-div ul :hover {
+  border-radius: 6px;
+  background-color: var(--font-heading);
+  color: var(--background-color);
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+}
+.container {
+  margin-left: 15%;
+  padding: 10px;
+  width: 85%;
+}
+.body-container {
+  box-shadow: 0 4px 8px 0 rgb(9, 9, 10, 0.2);
+  padding: 20px;
+  border-radius: 9px;
+}
+.form-item-div {
+  width: 50% !important;
+  margin: 0 20px;
+  text-align: left;
+}
+.form-item-div .textField {
+  width: 100% !important;
+}
+.upload-button {
+  width: 15% !important;
+}
+.border-1 {
+  border: 1px solid #a1a1abbd;
+}
+#dropzone-file {
+  border-radius: 6px;
+}
+::-webkit-file-upload-button {
+  border-radius: 6px !important;
+  background-color: var(--font-body);
+}

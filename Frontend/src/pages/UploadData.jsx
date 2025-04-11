@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -12,20 +12,45 @@ import Select from "@mui/material/Select";
 import { Button } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
+import UploadDataManual from "../components/UploadDataManual.jsx";
+
 import axios from "axios";
 
 import SideBar from "../components/SideBar";
 
 function UploadData() {
   const navigate = useNavigate();
-  const [engineerName, setEngineerName] = useState("");
-  const [shift, setShift] = useState("");
+  // const [engineerName, setEngineerName] = useState("");
+  const [unitId, setUnitId] = useState("");
   const [file, setFile] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
-
+  const [units , setUnits] = useState([]);
+  const token = localStorage.getItem("token");
+  console.log(token);
+  
   const notify = (message) => {
     toast.error(message, { position: "top-center" });
   };
+
+  useEffect(()=>{
+    const fetchUnitsByToken = async () =>{
+      try{
+        const res = await axios.get("http://localhost:3000/unit/user/get" , {
+          headers : {
+            Authorization : `Bearer ${token}`,
+          },
+          withCredentials : true,
+        });
+        // console.log(res?.data?.units);
+        setUnits(res?.data?.units);
+      }
+      catch(error){
+        console.log(error);
+        notify(error?.response?.data?.message);
+      }
+    }
+    fetchUnitsByToken();
+  } , [token]);
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -34,18 +59,12 @@ function UploadData() {
       notify("Please select a file");
       return;
     }
-
-    if (engineerName.trim() === "") {
-      notify("Please Enter Engineer Name");
-      return;
-    }
     setIsUploading(true);
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("engineer_name", engineerName);
-    formData.append("shift", shift);
-
+    formData.append("unitId" , unitId);
+    
     try {
       const response = await axios.post(
         "http://localhost:3000/upload",
@@ -92,45 +111,25 @@ function UploadData() {
                 style={{ display: "flex", width: "100%" }}
               >
                 <div className="form-item-div">
-                  <InputLabel variant="standard" htmlFor="outlined-required">
-                    Engineer Name
-                  </InputLabel>
-                  <TextField
-                    required
-                    id="outlined-required"
-                    label="Engineer Name"
-                    className="textField"
-                    value={engineerName}
-                    onChange={(e) => {
-                      setEngineerName(e.target.value);
-                    }}
-                  />
-                </div>
-                <div className="form-item-div">
                   <InputLabel
                     variant="standard"
                     htmlFor="demo-simple-select-label"
                   >
-                    Shift
+                    Unit
                   </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    className="textField"
-                    sx={{ width: "45%", ml: 1, mt: 1 }}
-                    value={shift}
-                    onChange={(e) => {
-                      setShift(e.target.value);
-                    }}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={"Shift 1"}>Shift 1</MenuItem>
-                    <MenuItem value={"Shift 2"}>Shift 2</MenuItem>
-                    <MenuItem value={"Shift 3"}>Shift 3</MenuItem>
-                    <MenuItem value={"Shift 4"}>Shift 4</MenuItem>
-                  </Select>
+
+                  <select id="unitId" value={unitId} onChange={(e)=>{setUnitId(e.target.value)}}>
+                    <option>Select An Option</option>
+                    {
+                      units.map((unit)=>{
+                        return(
+                          <option value={unit._id}>
+                            {unit.name}
+                          </option>
+                        )
+                      })
+                    }
+                  </select>
                 </div>
               </div>
               <div className="upload-div">
@@ -184,6 +183,9 @@ function UploadData() {
             </Box>
           </Box>
         </div>
+        <hr className="mt-8"/>
+        <h4 className="text-center text-2xl mb-8">You can also upload data manualy without uploading excel file</h4>
+        <UploadDataManual units={units}/>
       </div>
     </>
   );

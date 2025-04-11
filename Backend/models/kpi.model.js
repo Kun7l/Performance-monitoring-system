@@ -1,6 +1,11 @@
+
 import mongoose from "mongoose";
 
 const kpiSchema = new mongoose.Schema({
+  unitId : {
+    type : mongoose.Schema.Types.ObjectId,
+    ref : "unit",
+  },
   capacity: {
     value: {
       type: Number,
@@ -113,3 +118,4 @@ const kpiSchema = new mongoose.Schema({
 
 const kpiModel = mongoose.model("Kpi", kpiSchema);
 export default kpiModel
+

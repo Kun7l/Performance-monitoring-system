@@ -8,6 +8,8 @@ const Register = () => {
   const [password , setPassword] = useState("");
   const [unitId , setUnitId] = useState("");
   const [units , setUnits] = useState([]);
+  const [plantId , setPlantId] = useState("");
+  const [plants , setPlants] = useState([]);
 
   const notify = (message) => toast(message);
 
@@ -21,7 +23,7 @@ const Register = () => {
           email: email,
           password : password,
           role : "plant operator",
-          plantId : "67e2363a57c76a03f40561a9",
+          plantId : plantId,
           unitId : unitId,
         },
         { withCredentials: true }
@@ -37,17 +39,33 @@ const Register = () => {
   }
 
   useEffect(()=>{
+    const fetchPlant = async () =>{
+      try{
+        const allPlant = await axios.get("http://localhost:3000/plant/get" , { withCredentials: true });
+        setPlants(allPlant.data.plants);
+      }
+      catch(error){
+        notify(error?.response?.data?.message);
+      }
+    }
+    fetchPlant();
+  } , []);
+
+
+
+  useEffect(()=>{
     const fetchUnit = async () =>{
       try{
-        const res = await axios.get("http://localhost:3000/unit/get" , { withCredentials: true });
-        setUnits(res.data.units);
+        if(!plantId) return;
+        const allUnit = await axios.get(`http://localhost:3000/unit/get/${plantId}` , { withCredentials: true });
+        setUnits(allUnit.data.units);
       }
       catch(error){
         notify(error?.response?.data?.message);
       }
     }
     fetchUnit();
-  } , [])
+  } , [plantId]);
 
   return (
     <div className="register-page">
@@ -75,6 +93,26 @@ const Register = () => {
               required
             />
         </div>
+
+        <div className={"formGroup"}>
+          <label className={"label"}>Please Select Plant</label>
+          <br />
+          <select id="unitID" value={plantId} onChange={(e)=>{setPlantId(e.target.value)}}>
+            <option value="">Select an option</option>
+            { 
+              plants.map((plant)=>{
+                return(
+                  <option value={plant._id}>
+                    {plant.name}
+                  </option>
+                )
+              })
+            }
+          </select>
+        </div>
+
+
+
         <div className={"formGroup"}>
           <label className={"label"}>Please Select Unit</label>
           <br />

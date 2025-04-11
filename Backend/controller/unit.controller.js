@@ -1,4 +1,5 @@
 import unitModel from "../models/unit.model.js";
+import userModel from "../models/user.model.js";
 
 const unitRegister = async (req , res) =>{
     const {name , plantId} = req.body;
@@ -30,4 +31,33 @@ const fetchAllUnits = async (req,res) =>{
     }
 }
 
-export {unitRegister , fetchAllUnits};
+const getUnitsByPlantId = async (req , res) =>{
+    try{
+        const plantId = req.params.id;
+        if(!plantId){
+            return res.status(400).json({message : "plant id is required"});
+        }
+        const units = await unitModel.find({plantId : plantId});
+        return res.status(200).json({message :"units fetched successfully" , units : units});
+    }
+
+    catch(error){
+        return res.status(500).json({message : "internal server error"}); 
+    }
+}
+
+const getAllUnitsByUserId = async (req,res) =>{
+    try{
+        const userId = req.userId;
+        const user =  await userModel.findById(userId).populate('unitId');
+        // console.log(user);
+        return res.status(200).json({message : "units associated with current user found out" , units : user.unitId});
+        
+    }
+    catch(error){
+        console.log(error);
+        return res.status(500).json({message : "internal server error"});
+    }
+}
+
+export {unitRegister , fetchAllUnits , getUnitsByPlantId , getAllUnitsByUserId};

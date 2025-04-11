@@ -18,4 +18,14 @@ const plantRegister = async (req,res) =>{
     }
 }
 
-export {plantRegister};
+const getAllPlants = async (req,res) =>{
+    try{
+        const allPlants = await plantModel.find({});
+        return res.status(200).json({message : "plants found out successfully" , plants : allPlants});
+    }
+    catch(error){
+        return res.status(500).json({message : "internal server error"});
+    }
+}
+
+export {plantRegister , getAllPlants};

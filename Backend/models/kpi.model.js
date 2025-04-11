@@ -1,3 +1,4 @@
+
 import mongoose from "mongoose";
 
 const kpiSchema = new mongoose.Schema({
@@ -117,3 +118,4 @@ const kpiSchema = new mongoose.Schema({
 
 const kpiModel = mongoose.model("Kpi", kpiSchema);
 export default kpiModel
+

@@ -27,6 +27,9 @@ h1 {
   font-weight: 550;
   line-height: 1;
 }
+.heading-font{
+  color: var(--font-heading);
+}
 button,
 .button {
   background-color: var(--font-heading) !important;
@@ -38,6 +41,7 @@ button,
 }
 
 .sidebar-div {
+  position: fixed !important;
   background-color: #f0eeed;
   box-shadow: 0 4px 8px 0 rgb(9, 9, 10, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.01);
   border-radius: 6px;
@@ -93,9 +97,10 @@ button,
   width: 85%;
 }
 .body-container {
-  box-shadow: 0 4px 8px 0 rgb(9, 9, 10, 0.2);
+  box-shadow: 0 4px 8px rgba(9, 9, 10, 0.1), 0 -4px 8px rgba(9, 9, 10, 0.1);
   padding: 20px;
   border-radius: 9px;
+  margin: 10px 0;
 }
 .form-item-div {
   width: 50% !important;
@@ -117,4 +122,24 @@ button,
 ::-webkit-file-upload-button {
   border-radius: 6px !important;
   background-color: var(--font-body);
+}
+.form-item {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  margin: 10px;
+  text-align: left;
+  margin-top: 10px;
+}
+.form-item-div {
+  width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+}
+.form-submit-button {
+  width: 100%;
+  text-align: center;
+}
+.form-submit-button button {
+  height: 32px;
 }

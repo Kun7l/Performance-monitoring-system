@@ -27,7 +27,7 @@ h1 {
   font-weight: 550;
   line-height: 1;
 }
-.heading-font{
+.heading-font {
   color: var(--font-heading);
 }
 button,
@@ -142,4 +142,32 @@ button,
 }
 .form-submit-button button {
   height: 32px;
+}
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.login-container div {
+  padding: 15px;
+  width: 25%;
+}
+.login-container div form {
+  width: 100% !important;
+  text-align: center;
+  align-items: center !important;
+}
+.login-container div form .formGroup {
+  width: 100%;
+}
+.login-container div form h1 {
+  font-size: 2rem !important;
+}
+.login-button {
+  width: 100px !important;
+}
+.formGroup{
+  margin: 0 !important;
 }

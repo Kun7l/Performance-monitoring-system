@@ -168,6 +168,24 @@ button,
 .login-button {
   width: 100px !important;
 }
-.formGroup{
+.formGroup {
   margin: 0 !important;
+}
+.login-header {
+  width: 100% !important;
+  display: flex;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-slow {
+  margin: 0 40px 0 30px;
+  animation: rotate 5s linear infinite;
 }

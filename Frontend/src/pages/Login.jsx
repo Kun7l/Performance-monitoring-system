@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/user.slice.js";
 
+import LogoIcon from "../assests/logo.svg";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,7 +39,12 @@ const Login = () => {
     <div className="login-container">
       <div className="body-container">
         <form className="login-form" onSubmit={submitHandler}>
-          <h1>Login</h1>
+          <div className="login-header">
+            <span>
+              <img className="rotate-slow" src={LogoIcon} alt="" />
+            </span>
+            <h1>Login</h1>
+          </div>
           <div className={"formGroup"}>
             <label className={"label"}>Email</label>
             <br />
